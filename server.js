@@ -21,14 +21,13 @@ if(process.env.NODE_ENV=='production'){
     });
 }
 
-// var connection = mysql.createConnection({
-//     host:'localhost',
-//     port:3306,
-//     user:'root',
-//     password:'',
-//     database:'nptel'
-// })
-var connection="mysql://b3ef2efda41813:44f4c812@us-cdbr-east-06.cleardb.net/heroku_4a6cdaac807847d?reconnect=true";
+var connection = mysql.createConnection({
+    host:'us-cdbr-east-06.cleardb.net',
+    port:3306,
+    user:'b3ef2efda41813',
+    password:'44f4c812',
+    database:'heroku_4a6cdaac807847d'
+})
 connection.connect(function(error){
 
     if(!!error){
