@@ -1,0 +1,150 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  
+  
+  
+  
+}
+
+div[class*=box] {
+	height: 720px;
+	width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.row1 {  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0); 
+  font-family: 'Open Sans Condensed', sans-serif;
+  flex-wrap: wrap;
+  
+  
+  flex-wrap: wrap-reverse;
+  }
+
+  ul
+  {
+  padding-left: 0;
+  margin-left: 0;
+  background-color: #036;
+  color: White;
+  float: left;
+  width: 100%;
+  font-family: arial, helvetica, sans-serif;
+  }
+  
+  ul li { display: inline; }
+  
+  ul li 
+  {
+  padding: 0.2em 1em;
+  color: White;
+  text-decoration: none;
+  float: left;
+  border-right: 1px solid #fff;
+  }
+  
+
+.btn1 {
+	
+	height: 50px;
+
+	width: 250px;
+  
+  
+  
+  
+}
+
+
+
+
+/* 
+========================
+      BUTTON TWO
+========================
+*/
+.btn1-two {
+  color: #FFF;
+  text-align: center;
+	transition: all 0.5s;
+  position: relative;	
+  height: 100px;
+ 
+}
+.btn1-two span {
+	z-index: 3;	
+	display: block;
+	position: relative;
+	width: 100%;
+  height: 50%;	
+  padding-top: 30px;
+}
+.btn1-two::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.5s;
+	border: 1px solid rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
+}
+.btn1-two::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.5s;
+	border: 1px solid rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
+}
+.btn1-two:hover::before {
+  transform: rotate(-45deg);
+  background-color: rgba(255,255,255,0);
+}
+.btn1-two:hover::after {
+  transform: rotate(45deg);
+  background-color: rgba(255,255,255,0);
+}
+
+.column {
+  float: left;
+  width: 25%;
+  flex-wrap: wrap;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  
+}
