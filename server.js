@@ -1,7 +1,7 @@
+import path from 'path';
 var express = require('express');
 var mysql = require('mysql');
 const excel=require('exceljs');
-import path from 'path';
 let port = process.env.PORT || 3000;
 const url=process.env.NODE_ENV==`production`?``:"http://localhost:3000";
 
@@ -15,9 +15,9 @@ app.use(function(req,res,next){
  next();
 });
 if(process.env.NODE_ENV=='production'){
-    app.use(express.static(path.resolve(__dirname,`../../dist`)));
+    app.use(express.static(path.resolve(__dirname,`./dist`)));
     app.get('/*',(req,res)=>{
-        res.sendFile(path.resolve('./index.html'));
+        res.sendFile(path.resolve('index.html'));
     });
 }
 
