@@ -52,10 +52,13 @@ div[class*=box] {
   color: White;
   float: left;
   width: 100%;
+
   font-family: arial, helvetica, sans-serif;
   }
   
-  ul li { display: inline; }
+  ul li { 
+    display: inline; 
+  }
   
   ul li 
   {
@@ -70,12 +73,7 @@ div[class*=box] {
 .btn1 {
 	
 	height: 50px;
-
 	width: 250px;
-  
-  
-  
-  
 }
 
 
