@@ -43,7 +43,9 @@ connection.connect(function(error){
         console.log('Connectd');
        }
 });
-
+connection.on('error',function(err){
+  console.log("caught this error"+err.toString());
+});
 
 app.post('/send',(req, res) => {
   console.log("In here");
