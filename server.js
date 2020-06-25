@@ -21,7 +21,7 @@ if(process.env.NODE_ENV=='production'){
     });
 }
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
     host:'us-cdbr-east-06.cleardb.net',
     port:3306,
     user:'b3ef2efda41813',
@@ -35,17 +35,17 @@ var connection = mysql.createConnection({
 //   password:'',
 //   database:'nptel'
 // })
-connection.connect(function(error){
+// connection.connect(function(error){
 
-    if(!!error){
-        console.log(error); 
-       } else{
-        console.log('Connectd');
-       }
-});
-connection.on('error',function(err){
-  console.log("caught this error"+err.toString());
-});
+//     if(!!error){
+//         console.log(error); 
+//        } else{
+//         console.log('Connectd');
+//        }
+// });
+// connection.on('error',function(err){
+//   console.log("caught this error"+err.toString());
+// });
 
 app.post('/send',(req, res) => {
   console.log("In here");
