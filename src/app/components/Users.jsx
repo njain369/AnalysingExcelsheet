@@ -38,7 +38,7 @@ export class Users extends Component {
             <div class="container-login100">
                 <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="https://cdn.imgbin.com/10/9/2/imgbin-computer-icons-login-management-user-others-9AH8r7ebKbXTy8T79a5UiL5n7.jpg" alt="IMG"/>
+                        <img src="https://www.pinclipart.com/picdir/big/487-4877720_user-svg-icon-free-transparent-background-registered-user.png" alt="IMG"/>
                     </div>
     
                     <form class="login100-form validate-form" onSubmit={this.handleSubmit}>
