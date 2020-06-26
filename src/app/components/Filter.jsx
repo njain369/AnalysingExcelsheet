@@ -94,7 +94,7 @@ export class Filter extends Component {
     // //that.state.array =Object.entries(that.state.updatestud);
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
-
+    this.handleSubmitfilter;
   }
   download() {
     // fake server request, getting the file url as response

@@ -35,6 +35,9 @@ export class Total extends Component {
          below40:parseInt(that.state.students[0].below40),elitesilver:parseInt(that.state.students[0].totalelitesilver),
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
     }); 
+
+    this.handleSubmit8;
+
    }
 
    handleSubmit8(event) {
@@ -111,7 +114,6 @@ export class Total extends Component {
   
  </div>
  <button class="button" style={{float:"left",marginLeft:"690px"}} onClick={this.handleSubmit8}>Go</button>
-{this.handleSubmit8}
 
 
 <div className="div1" style={{float:"center",marginTop:"80px"}}>
