@@ -77,7 +77,7 @@ h1 {
     
   }
   .center-col{
-    max-height: 400px;
+    max-height: 600;
     overflow-y: scroll;
   }
   .button {

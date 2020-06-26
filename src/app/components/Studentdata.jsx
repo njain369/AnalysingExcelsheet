@@ -124,7 +124,7 @@ export class Studentdata extends Component {
     // //that.state.array =Object.entries(that.state.updatestud);
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
-    this.handleSubmit4();
+    this.handleSubmit4;
   }
 
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.

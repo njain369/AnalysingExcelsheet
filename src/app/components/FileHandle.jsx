@@ -11,7 +11,7 @@ import {
 import { history } from '../store/history';
 import { Link } from 'react-router-dom';
 import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
-const url=process.env.NODE_ENV==`production`?``:"http://localhost:3000";
+const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:3000";
 export class FileHandle extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +42,7 @@ export class FileHandle extends Component {
     console.log(this.state.rows.length);
     var i = 1, k = 0;
     var n = this.state.rows.length;
-    var year = '20'.concat(this.state.rows[2][3].substring(5, 7));
+    var year = '20'.concat(this.state.rows[2][1].substring(5, 7));
     var coursename = [];
     var elite = [];
     var elitesilver = [];
@@ -58,37 +58,36 @@ export class FileHandle extends Component {
       elitesilver[i] = 0;
     }
 
-    coursename[0] = this.state.rows[1][2];
-    console.log(this.state.rows[1][14]);
-    if (this.state.rows[1][14] === "Successfully completed") {
+    coursename[0] = this.state.rows[1][0];
+    if (this.state.rows[1][2] === "Successfully completed") {
       console.log("suceessfully completed");
       if (!successComp[k]) {
         successComp[k] = 0;
       }
       successComp[k]++;
     }
-    else if (this.state.rows[1][14] === "Elite+Silver") {
+    else if (this.state.rows[1][2] === "Elite+Silver") {
       console.log("Ellitesilver");
       if (!elitesilver[k]) {
         elitesilver[k] = 0;
       }
       elitesilver[k]++;
     }
-    else if (this.state.rows[1][14] === "Elite") {
+    else if (this.state.rows[1][2] === "Elite") {
       console.log("Ellite");
       if (!elite[k]) {
         elite[k] = 0;
       }
       elite[k]++;
     }
-    else if (this.state.rows[1][14] === "Elite+gold") {
+    else if (this.state.rows[1][2] === "Elite+gold") {
       console.log("Ellitegold");
       if (!elitegold[k]) {
         elitegold[k] = 0;
       }
       elitegold[k]++;
     }
-    else if (this.state.rows[1][14] === "No Certificate") {
+    else if (this.state.rows[1][2] === "No Certificate") {
       console.log("No certificate");
       if (!below40[k]) {
         below40[k] = 0;
@@ -98,39 +97,39 @@ export class FileHandle extends Component {
 
 
     for (i = 1; i < n; i++) {
-      if (this.state.rows[i][2] !== coursename[k]) {
+      if (this.state.rows[i][0] !== coursename[k]) {
         k++;
-        coursename[k] = this.state.rows[i][2];
+        coursename[k] = this.state.rows[i][0];
       }
-      if (this.state.rows[i][14] === "Successfully completed") {
+      if (this.state.rows[i][2] === "Successfully completed") {
         console.log("suceessfully completed");
         if (!successComp[k]) {
           successComp[k] = 0;
         }
         successComp[k]++;
       }
-      else if (this.state.rows[i][14] === "Elite+Silver") {
+      else if (this.state.rows[i][2] === "Elite+Silver") {
         console.log("Ellitesilver");
         if (!elitesilver[k]) {
           elitesilver[k] = 0;
         }
         elitesilver[k]++;
       }
-      else if (this.state.rows[i][14] === "Elite") {
+      else if (this.state.rows[i][2] === "Elite") {
         console.log("Ellite");
         if (!elite[k]) {
           elite[k] = 0;
         }
         elite[k]++;
       }
-      else if (this.state.rows[i][14] === "Elite+gold") {
+      else if (this.state.rows[i][2] === "Elite+gold") {
         console.log("Ellitegold");
         if (!elitegold[k]) {
           elitegold[k] = 0;
         }
         elitegold[k]++;
       }
-      else if (this.state.rows[i][14] === "No Certificate") {
+      else if (this.state.rows[i][2] === "No Certificate") {
         console.log("No certificate");
         if (!below40[k]) {
           below40[k] = 0;
@@ -178,8 +177,8 @@ export class FileHandle extends Component {
 
     //   headers: { 'Content-Type': 'application/json' }
     // })
-    
-    fetch(url+'/send', {
+
+    fetch(url + '/send', {
       method: 'POST',
       body: JSON.stringify({
         rows: this.state.rows, coursename: coursename,
@@ -251,20 +250,25 @@ export class FileHandle extends Component {
   render() {
     return (
       <div>
-      
-       <div style={{marginTop:"0px"}} class="nav">
-         <ul class="menu"> 
-                 <li><Link to="/dashboard"><h1>Dashboard</h1></Link></li>
-                    <li><Link to="/"><h1>Logout</h1></Link></li>
-                    {/* <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>  s*/}
-             </ul>  
-      </div>
+  <div style={{ marginTop: "0px" }} class="nav">
+          <ul class="menu">
+            <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
+            <li><Link class="nav-link" to="/usermanual"><h2>Usermanual</h2></Link></li>
+
+            <li id="leftist"><Link to="/"><h2>Logout</h2></Link></li>
+
+
+            {/* <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>  s*/}
+          </ul>
+        </div>
+
         <div style={{ marginTop: "0px" }}>
 
-          <Container style={{marginTop:"100px"}}>
+          <Container style={{ marginTop: "100px" }}>
             <form>
               <FormGroup row>
                 <Label for="exampleFile" xs={6} sm={4} lg={2} size="lg">Upload</Label>
+
                 <Col xs={4} sm={8} lg={10}>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
@@ -281,7 +285,11 @@ export class FileHandle extends Component {
                 </Col>
               </FormGroup>
             </form>
-
+            <div style={{textAlign:"center"}}>
+                  <h5>Preview</h5>
+                <img src="https://mail.google.com/mail/u/1?ui=2&ik=9ebac8bdc1&attid=0.1&permmsgid=msg-f:1670594090186569289&th=172f24794d6ff649&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ9evxCJoBuLADm41z906vIVLSnQj-fGhwJV_36dtyPDDl12YTH6QvTPcW8uDPbSPeWq1L4ieuyiwRMYFTvYzJeZ4uXMNBARcUmiowMLIdJFLrRsq8WlTvMa67o&disp=emb&realattid=ii_kbwnq8vm0"></img>
+                </div>
+                
             {this.state.dataLoaded &&
               <div class="jumbotron-background">
                 <Card body outline color="secondary" className="restrict-card">
