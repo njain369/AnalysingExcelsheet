@@ -49,8 +49,11 @@ export class Dashboard extends Component {
 
             <div>
                 <ul class="menu">
-                 <li><Link to="/dashboard"><h1>Dashboard</h1></Link></li>
-                    <li><Link to="/"><h1>Logout</h1></Link></li>
+                <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
+                 <li><Link class="nav-link" to="/usermanual"><h2>Usermanual</h2></Link></li>
+          
+                    <li id="leftist"><Link to="/"><h2>Logout</h2></Link></li>
+               
                     {/* <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>  */}
                 </ul>
 

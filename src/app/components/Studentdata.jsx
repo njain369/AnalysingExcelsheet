@@ -127,15 +127,18 @@ export class Studentdata extends Component {
     event.preventDefault();
   }
 
-
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
     return (
       <div>
 
 <div style={{marginTop:"0px"}} class="nav">
          <ul class="menu"> 
-                 <li><Link to="/dashboard"><h1>Dashboard</h1></Link></li>
-                    <li><Link to="/"><h1>Logout</h1></Link></li>
+                 <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
+                 <li><Link class="nav-link" to="/usermanual"><h2>Usermanual</h2></Link></li>
+          
+                    <li id="leftist"><Link to="/"><h2>Logout</h2></Link></li>
+                     
+            
                     {/* <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>  s*/}
              </ul>  
       </div>
@@ -169,7 +172,7 @@ export class Studentdata extends Component {
 
             </div>
             <button class="button button2" onClick={this.handleSubmit4}>Go</button>
-
+            {this.handleSubmit4}
           </div><div class="col11">
 
             <h1></h1>

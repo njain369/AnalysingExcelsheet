@@ -8,6 +8,7 @@ import {FileHandle}from './FileHandle';
 import {Studentdata} from './Studentdata';
 import {Filter} from './Filter';
 import {Total}from './Total';
+import {Usermanual} from './Usermanual';
 export const Main=()=>(
     <Router history={history}>
     
@@ -36,7 +37,10 @@ export const Main=()=>(
         exact path="/total"
         component={Total}>
         </Route>
- 
+        <Route
+        exact path="/usermanual"
+        component={Usermanual}>
+        </Route>
             </div>
     </Provider>
     </Router>

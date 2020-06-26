@@ -80,11 +80,13 @@ export class Total extends Component {
    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
       return (
           <div>
-         <div style={{marginTop:"0px"}} class="nav">
-         <ul class="menu"> 
-                 <li><Link to="/dashboard"><h1>Dashboard</h1></Link></li>
-                    <li><Link to="/"><h1>Logout</h1></Link></li>
-                    {/* <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>  s*/}
+         <div style={{marginTop:"-10px"}}>
+         <ul class="nav menu"> 
+         <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
+                 <li><Link class="nav-link" to="/usermanual"><h2>Usermanual</h2></Link></li>
+          
+                    <li id="leftist"><Link to="/"><h2>Logout</h2></Link></li>
+               
              </ul>  
       </div>  
       <h1>
@@ -109,7 +111,7 @@ export class Total extends Component {
   
  </div>
  <button class="button" style={{float:"left",marginLeft:"690px"}} onClick={this.handleSubmit8}>Go</button>
-
+{this.handleSubmit8}
 
 
 <div className="div1" style={{float:"center",marginTop:"80px"}}>
