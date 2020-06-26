@@ -36,7 +36,7 @@ export class Total extends Component {
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
     }); 
 
-    this.handleSubmit8;
+    this.handleSubmit8();
 
    }
 
