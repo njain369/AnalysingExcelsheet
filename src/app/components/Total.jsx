@@ -24,8 +24,16 @@ export class Total extends Component {
 
    componentDidMount(){
        const that=this;
+       var year='Select Year';
+       var null1=0;
        console.log('in here');
-    fetch(url+'/piedata')
+    fetch(url+'/piedatayear', {
+      method: 'POST',
+
+      body: JSON.stringify({year: year, null1: null1 }), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(res=>res.json())
     //.then(students=>this.setState({students}));
     .then(function(body){
@@ -37,8 +45,6 @@ export class Total extends Component {
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
         }
         }); 
-
-    this.handleSubmit8;
 
    }
 

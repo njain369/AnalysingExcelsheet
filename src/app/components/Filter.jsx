@@ -72,10 +72,17 @@ export class Filter extends Component {
 
    componentDidMount() {
     const that = this;
-
+     var null1=0;
+    var class1 = 'Certificate-Type';
+    var year = 'Select Year';
+   
 
     console.log('in here');
-    fetch(url+'/selectall')
+    fetch(url+'/filterdata', { method: 'POST', 
+ 
+    body: JSON.stringify({class1:class1,year:year,null1:null1}), // data can be `string` or {object}!
+ 
+    headers:{ 'Content-Type': 'application/json' } })
       .then(res => res.json())
       //.then(students=>this.setState({students}));
       .then(function (body) {
