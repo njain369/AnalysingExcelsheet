@@ -164,7 +164,7 @@ export class Studentdata extends Component {
    // this.loading(); 
 
   }
-  truncatetable(){
+  truncatetable2(){
     fetch(url + '/truncatestd')
     .then(res=>res.json)
     
@@ -234,7 +234,7 @@ export class Studentdata extends Component {
               </select>
             </div>
             <button class="button button2" onClick={this.download}>Excel-Download</button>
-            <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable}>Delete</button>
+            <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable2}>Delete</button>
           </div>
         </div>
         <p id="demo"></p>

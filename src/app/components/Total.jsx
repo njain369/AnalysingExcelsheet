@@ -86,7 +86,7 @@ export class Total extends Component {
     event.preventDefault();
   }
 
-  truncatetable(){
+  truncatetable3(){
     fetch(url + '/truncatetotal')
     .then(res=>res.json)
     
@@ -135,7 +135,7 @@ export class Total extends Component {
 <button class="button button4">SuccessfullyCompleted</button>
 <button class="button button5">Below40</button>
 
-<button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable}>Delete</button>
+<button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable3}>Delete</button>
 
 </div>
       <div> 
