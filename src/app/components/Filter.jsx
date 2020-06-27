@@ -120,9 +120,16 @@ export class Filter extends Component {
   }
 
   truncatetable1(){
+    console.log("Inside Truncate Filter")
+    var that=this;
     fetch(url + '/truncatefilter')
     .then(res=>res.json)
-    
+    .then(function (body) {
+      if(true){
+      that.setState({ students: body.results });
+      }
+      console.log(that.state.students);
+    });
   }
 
 

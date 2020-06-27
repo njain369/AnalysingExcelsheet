@@ -342,7 +342,7 @@ app.get("/truncatetotal",function(req,res){
   if(error){
       res.status(400).send('error in database operation');
   }else{
-      console.log(results);
+      console.log("Deleted Total Congo");
       res.send({results:results});
   }       
   });
