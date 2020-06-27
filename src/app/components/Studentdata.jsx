@@ -64,6 +64,7 @@ export class Studentdata extends Component {
       ]
     }
     this.handleSubmit4 = this.handleSubmit4.bind(this);
+    this.handleSubmit4;
   }
 
   download() {
@@ -98,7 +99,7 @@ export class Studentdata extends Component {
       body: JSON.stringify({ dep: dep, class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
 
       headers: { 'Content-Type': 'application/json' }
-    })
+    }())
       .then(res => res.json())
       .then(function (body) {
         that.setState({ students: body.results });
@@ -126,7 +127,7 @@ export class Studentdata extends Component {
     // console.log(that.state.array)
   }
   componentWillMount(){
-this.handleSubmit4;
+   
   }
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
     return (
@@ -172,7 +173,7 @@ this.handleSubmit4;
               </select>
 
             </div>
-            <button class="button button2" onClick={this.handleSubmit4}>Go</button>
+            <button class="button button2" onClick={()=>{this.handleSubmit4()}  }>Go</button>
           </div>
           <div class="col11">
 
