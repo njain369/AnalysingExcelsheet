@@ -164,7 +164,11 @@ export class Studentdata extends Component {
    // this.loading(); 
 
   }
-  
+  truncatetable(){
+    fetch(url + '/truncatestd')
+    .then(res=>res.json)
+    
+  }
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
     return (
       <div>
@@ -230,7 +234,7 @@ export class Studentdata extends Component {
               </select>
             </div>
             <button class="button button2" onClick={this.download}>Excel-Download</button>
-
+            <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable}>Delete</button>
           </div>
         </div>
         <p id="demo"></p>

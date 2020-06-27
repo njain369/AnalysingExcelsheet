@@ -119,6 +119,7 @@ app.post('/send',(req, res) => {
 app.get("/downstd",(req,res)=>{
   res.download("\anlaysis1.xlsx");
 })
+
 app.get("/selectstd",function(req,res){
   connection.query("select * from registration",function(error,results){
     if(error){
@@ -321,7 +322,43 @@ app.post("/studentdata",function(req,res){
   }       
   }); 
 });
+//Truncating table REST API
 
+app.get("/truncatefilter",function(req,res){
+  var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.analysis1";
+  connection.query(sql,function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+
+app.get("/truncatetotal",function(req,res){
+  var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.totalanalysis";
+  connection.query(sql,function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+
+app.get("/truncatestd",function(req,res){
+  var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.registration";
+  connection.query(sql,function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
 app.listen(port);
 
 // app.get('/',function(req,resp){

@@ -89,7 +89,7 @@ export class Filter extends Component {
         that.setState({ students: body });
         console.log('in here students');
         console.log(that.state.students);
-        console.log("refined data  is here")
+        console.log("refined data is here")
         if(true){
         that.setState({ updatestud: body.results })
         }
@@ -119,6 +119,11 @@ export class Filter extends Component {
     }, 100);
   }
 
+  truncatetable(){
+    fetch(url + '/truncatefilter')
+    .then(res=>res.json)
+    
+  }
 
 
    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
@@ -176,7 +181,7 @@ export class Filter extends Component {
   </select>
  </div>
   <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.download}>Excel-Download</button>
-  
+  <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable}>Delete</button>
 </div>
 
     </div>

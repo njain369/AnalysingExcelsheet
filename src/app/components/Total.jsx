@@ -86,7 +86,11 @@ export class Total extends Component {
     event.preventDefault();
   }
 
-   
+  truncatetable(){
+    fetch(url + '/truncatetotal')
+    .then(res=>res.json)
+    
+  }
 
    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
       return (
@@ -131,6 +135,7 @@ export class Total extends Component {
 <button class="button button4">SuccessfullyCompleted</button>
 <button class="button button5">Below40</button>
 
+<button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.truncatetable}>Delete</button>
 
 </div>
       <div> 
