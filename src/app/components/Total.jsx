@@ -31,10 +31,12 @@ export class Total extends Component {
     .then(function(body){
         that.setState({students:Object.values(body.results)});
         console.log(body);
+        if(true){
         that.setState({elite:parseInt(that.state.students[0].total_elite),
          below40:parseInt(that.state.students[0].below40),elitesilver:parseInt(that.state.students[0].totalelitesilver),
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
-    }); 
+        }
+        }); 
 
     this.handleSubmit8;
 

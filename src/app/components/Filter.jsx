@@ -83,18 +83,20 @@ export class Filter extends Component {
         console.log('in here students');
         console.log(that.state.students);
         console.log("refined data  is here")
+        if(true){
         that.setState({ updatestud: body.results })
-        console.log(that.state.updatestud);
-        console.log("This is new data")
-        that.setState({updatestud:Object.values(body.results)})
-        console.log(that.state.updatestud);
+        }
+    //    console.log(that.state.updatestud);
+     //   console.log("This is new data")
+//        that.setState({updatestud:Object.values(body.results)})
+  //      console.log(that.state.updatestud);
       });
     //      that.state.array =Object.keys(this.state.updatestud);
 
     // //that.state.array =Object.entries(that.state.updatestud);
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
-    this.handleSubmitfilter;
+    //this.handleSubmitfilter;
   }
   download() {
     // fake server request, getting the file url as response
