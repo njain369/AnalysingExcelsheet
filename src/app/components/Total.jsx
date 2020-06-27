@@ -87,7 +87,13 @@ export class Total extends Component {
   }
 
   truncatetable3(){
-    fetch(url + '/truncatetotal')
+    fetch(url + '/truncatetotal',{
+      method: 'POST',
+
+      body: JSON.stringify({class:"TE"}), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(res=>res.json)
     
   }

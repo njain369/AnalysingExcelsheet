@@ -337,7 +337,7 @@ app.post("/truncatefilter",function(req,res){
   });
 });
 
-app.get("/truncatetotal",function(req,res){
+app.post("/truncatetotal",function(req,res){
   var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.totalanalysis";
   connection.query(sql,function(error,results){
   if(error){
@@ -349,7 +349,7 @@ app.get("/truncatetotal",function(req,res){
   });
 });
 
-app.get("/truncatestd",function(req,res){
+app.post("/truncatestd",function(req,res){
   var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.registration";
   connection.query(sql,function(error,results){
   if(error){

@@ -166,7 +166,13 @@ export class Studentdata extends Component {
 
   }
   truncatetable2(){
-    fetch(url + '/truncatestd')
+    fetch(url + '/truncatestd',{
+      method: 'POST',
+
+      body: JSON.stringify({class:"TE"}), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(res=>res.json)
     
   }
