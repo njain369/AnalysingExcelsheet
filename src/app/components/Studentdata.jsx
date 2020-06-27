@@ -5,6 +5,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:3000";
 
 export class Studentdata extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
     this.state = { //state is by default an object
@@ -64,7 +65,6 @@ export class Studentdata extends Component {
       ]
     }
     this.handleSubmit4 = this.handleSubmit4.bind(this);
-    this.loading=this.loading.bind(this);
   }
 
   download() {
@@ -110,36 +110,58 @@ export class Studentdata extends Component {
     event.preventDefault();
   }
 
-  loading(){
-  console.log("Inside Loading functor")
-    
-    fetch(url + '/selectstd')
+  // loading(){
+  // console.log("Inside Loading functor")
+  //   var dep="Select Department";
+  //   var class1="Select Class";
+  //   var year="Select Year";
+  //   var null1=0;
+  //   fetch(url + '/studentdata', {
+  //     method: 'POST',
+
+  //     body: JSON.stringify({ dep: dep, class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
+
+  //     headers: { 'Content-Type': 'application/json' }
+  //   })
+  //     .then(res => res.json())
+  //     //.then(students=>this.setState({students}));
+  //     .then(function (body) {
+  //       console.log("Setting state")
+  //       this.setState({ students: body.results });
+  //       console.log(this.state.students);
+  //     });
+  // }
+  componentDidMount() {
+    this._isMounted = true;
+    var that = this;
+    var dep="Select Department";
+    var class1="Select Class";
+    var year="Select Year";
+    var null1=0;
+   
+    console.log('in here');
+    fetch(url +  '/studentdata', {
+      method: 'POST',
+
+      body: JSON.stringify({ dep: dep, class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
       .then(res => res.json())
       //.then(students=>this.setState({students}));
       .then(function (body) {
-        console.log("Setting state")
-        this.setState({ students: body.results });
-        console.log(this.state.students);
+        if(true){
+        that.setState({ students: body.results });
+        }
+        console.log(that.state.students);
       });
-  }
-  componentDidMount() {
-    // var that = this;
-   
-    // console.log('in here');
-    // fetch(url + '/selectstd')
-    //   .then(res => res.json())
-    //   //.then(students=>this.setState({students}));
-    //   .then(function (body) {
-    //     that.setState({ students: body.results });
-    //     console.log(that.state.students);
-    //   });
-    //      that.state.array =Object.keys(this.state.updatestud);
+         //that.state.array =Object.keys(this.state.updatestud);
 
-    // //that.state.array =Object.entries(that.state.updatestud);
+    //that.state.array =Object.entries(that.state.updatestud);
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
   
-    this.onLoad = this.loading(); 
+   // this.loading(); 
 
   }
   

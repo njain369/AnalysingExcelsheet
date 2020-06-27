@@ -12,7 +12,7 @@ import {Usermanual} from './Usermanual';
 export const Main=()=>(
     <Router history={history}>
     
-    <Provider>
+    
         <div>
         <Route
         exact path="/"
@@ -42,6 +42,5 @@ export const Main=()=>(
         component={Usermanual}>
         </Route>
             </div>
-    </Provider>
     </Router>
 )
