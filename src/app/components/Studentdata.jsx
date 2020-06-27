@@ -65,6 +65,7 @@ export class Studentdata extends Component {
       ]
     }
     this.handleSubmit4 = this.handleSubmit4.bind(this);
+    this.truncatetable2=this.truncatetable2.bind(this);
   }
 
   download() {
