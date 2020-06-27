@@ -126,7 +126,13 @@ export class Filter extends Component {
   truncatetable1() {
     console.log("Inside Truncate Filter")
     var that = this;
-    fetch(url + '/truncatefilter')
+    fetch(url +'/truncatefilter',{
+      method: 'POST',
+
+      body: JSON.stringify({ class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
       .then(res => res.json)
 
   }

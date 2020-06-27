@@ -324,12 +324,13 @@ app.post("/studentdata",function(req,res){
 });
 //Truncating table REST API
 
-app.get("/truncatefilter",function(req,res){
+app.post("/truncatefilter",function(req,res){
   var sql="TRUNCATE TABLE heroku_4a6cdaac807847d.analysis1";
   connection.query(sql,function(error,results){
   if(error){
       res.status(400).send('error in database operation');
   }else{
+    console.log("DOne with deletion in filter");
       console.log(results);
       res.send({results:results});
   }       
