@@ -112,13 +112,14 @@ export class Studentdata extends Component {
 
   loading(){
   console.log("Inside Loading functor")
-    var that = this;
+    
     fetch(url + '/selectstd')
       .then(res => res.json())
       //.then(students=>this.setState({students}));
       .then(function (body) {
-        that.setState({ students: body.results });
-        console.log(that.state.students);
+        console.log("Setting state")
+        this.setState({ students: body.results });
+        console.log(this.state.students);
       });
   }
   componentDidMount() {
