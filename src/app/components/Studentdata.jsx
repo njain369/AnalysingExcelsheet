@@ -64,7 +64,7 @@ export class Studentdata extends Component {
       ]
     }
     this.handleSubmit4 = this.handleSubmit4.bind(this);
-  
+    this.loading=this.loading.bind(this);
   }
 
   download() {
@@ -111,6 +111,7 @@ export class Studentdata extends Component {
   }
 
   loading(){
+  console.log("Inside Loading functor")
     var that = this;
     fetch(url + '/selectstd')
       .then(res => res.json())
@@ -137,14 +138,14 @@ export class Studentdata extends Component {
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
   
-    
+    this.onLoad = this.loading(); 
 
   }
   
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
     return (
       <div>
-  {window.load=this.loading()}
+  
         <div style={{ marginTop: "0px" }} class="nav">
           <ul class="menu">
             <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
