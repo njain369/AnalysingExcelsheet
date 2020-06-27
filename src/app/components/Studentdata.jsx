@@ -64,7 +64,7 @@ export class Studentdata extends Component {
       ]
     }
     this.handleSubmit4 = this.handleSubmit4.bind(this);
-    this.handleSubmit4;
+  
   }
 
   download() {
@@ -99,7 +99,7 @@ export class Studentdata extends Component {
       body: JSON.stringify({ dep: dep, class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
 
       headers: { 'Content-Type': 'application/json' }
-    }())
+    })
       .then(res => res.json())
       .then(function (body) {
         that.setState({ students: body.results });
@@ -109,10 +109,9 @@ export class Studentdata extends Component {
 
     event.preventDefault();
   }
-  componentDidMount() {
+
+  loading(){
     var that = this;
-   
-    console.log('in here');
     fetch(url + '/selectstd')
       .then(res => res.json())
       //.then(students=>this.setState({students}));
@@ -120,19 +119,31 @@ export class Studentdata extends Component {
         that.setState({ students: body.results });
         console.log(that.state.students);
       });
+  }
+  componentDidMount() {
+    // var that = this;
+   
+    // console.log('in here');
+    // fetch(url + '/selectstd')
+    //   .then(res => res.json())
+    //   //.then(students=>this.setState({students}));
+    //   .then(function (body) {
+    //     that.setState({ students: body.results });
+    //     console.log(that.state.students);
+    //   });
     //      that.state.array =Object.keys(this.state.updatestud);
 
     // //that.state.array =Object.entries(that.state.updatestud);
     // that.state.array = Object.values(that.state.students);
     // console.log(that.state.array)
+  
+    window.load=this.loading()
   }
-  componentWillMount(){
-   
-  }
+  
   render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
     return (
       <div>
-
+  
         <div style={{ marginTop: "0px" }} class="nav">
           <ul class="menu">
             <li><Link to="/dashboard"><h2>Dashboard</h2></Link></li>
@@ -173,7 +184,7 @@ export class Studentdata extends Component {
               </select>
 
             </div>
-            <button class="button button2" onClick={()=>{this.handleSubmit4()}  }>Go</button>
+            <button class="button button2" onClick={this.handleSubmit4}>Go</button>
           </div>
           <div class="col11">
 
