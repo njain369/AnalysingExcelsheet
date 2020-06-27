@@ -19,21 +19,22 @@ export class Usermanual extends Component {
                     </ul>
                 </div>
                 <div class="proe">
-                    <div><h1>Excel-Upload</h1>
+                    <div><h1></h1>
+                    <h2>Excel-Upload</h2>
                         <ul class="abc">
                             <li class="abc">&#8226; In this page user have to upload an excel file which has to be analysed.</li>
                             <li class="abc">&#8226;First you have browse from your computer,as soon as you select the file the preview of the file is shown below.</li>
-                            <li class="abc">&#8226;You have to click upload button to upload data into database.</li>
-                            <li class="abc"> &nbsp; &nbsp; &#8226;  Excel files should follow the exact convetion as showed in this image.</li>
+                            <li class="abc">&#8226;You have to click upload button to upload data into database,and excel files should follow the exact convetion as showed in this image.</li>
+                
                         </ul>
-
+                     <h1> </h1>
                         
                         <div>
                             <img src="https://mail.google.com/mail/u/1?ui=2&ik=9ebac8bdc1&attid=0.1&permmsgid=msg-f:1670594090186569289&th=172f24794d6ff649&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ9evxCJoBuLADm41z906vIVLSnQj-fGhwJV_36dtyPDDl12YTH6QvTPcW8uDPbSPeWq1L4ieuyiwRMYFTvYzJeZ4uXMNBARcUmiowMLIdJFLrRsq8WlTvMa67o&disp=emb&realattid=ii_kbwnq8vm0"></img>
                         </div>
                     </div>
 
-                    <div><h1>Registered-Student-Data</h1>
+                    <div><h2>Registered-Student-Data</h2>
                         <ul class="abc">
                             <li class="abc">&#8226;The data of the Students who filled this form(https://kjsieit-nptel.herokuapp.com) is shown in this tab. </li>
 
@@ -42,7 +43,7 @@ export class Usermanual extends Component {
                        
                         </ul>
                     </div>
-                    <div><h1>Analysed-Data</h1>
+                    <div><h2>Analysed-Data</h2>
                         <ul class="abc"><li class="abc">&#8226;The data uploaded from the excel is analysed and its summary is presented here.</li>
                             <li class="abc">&#8226;One can filter data based on certificate type and year. </li>
                             <li class="abc">&#8226;You have to press DELETE for analysing new sheet . </li>
@@ -52,7 +53,7 @@ export class Usermanual extends Component {
 
 
                     </div>
-                    <div><h1>Total-Analysis</h1>
+                    <div><h2>Total-Analysis</h2>
                         <ul class="abc">&#8226;
                         <li class="abc">&#8226;In this tab the user can view analysed data in the form of Pie chart.</li>
                             <li class="abc">&#8226;The Pie can be selected for all years or a particular year.</li>
