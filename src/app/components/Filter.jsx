@@ -129,7 +129,7 @@ export class Filter extends Component {
     fetch(url +'/truncatefilter',{
       method: 'POST',
 
-      body: JSON.stringify({ class1: class1, year: year, null1: null1 }), // data can be `string` or {object}!
+      body: JSON.stringify({class:"TE"}), // data can be `string` or {object}!
 
       headers: { 'Content-Type': 'application/json' }
     })
