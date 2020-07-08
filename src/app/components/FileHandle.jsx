@@ -33,16 +33,45 @@ export class FileHandle extends Component {
     this.fileInput = React.createRef();
   }
 
-  sqlupload = (event) => {
-    this.setState({
+   sqlupload = (event) => {
+
+   this.setState({
       rows: event.target.value
     });
 
     console.log("Done");
     console.log(this.state.rows.length);
-    var i = 1, k = 0;
+    
+
+    var courseCol=-1;
+    var studentIDcol=-1;
+    var certificateCol=-1;
+    
+
+    for(col=0;col<20;col++){
+      console.log(this.state.rows[0][col]);
+      if(this.state.rows[1][col]==="CourseName" || this.state.rows[0][col]==="CourseName"){
+        courseCol=col;
+      }
+      else if(this.state.rows[1][col]==="Student ID" || this.state.rows[0][col]==="Student ID"){
+        studentIDcol=col;
+      }
+      else if(this.state.rows[1][col]==="Certificate Type" || this.state.rows[0][col]==="Certificate Type"){
+        certificateCol=col;
+      }
+    }
+
+    console.log(studentIDcol,certificateCol,courseCol);
+    if(studentIDcol==-1||certificateCol==-1||courseCol==-1){
+      console.log(".....***");
+      alert("Error");
+      history.push('/dashboard');
+      event.preventDefault();
+    }
+    else{
+    var i = 1, k = 0,col=0;
     var n = this.state.rows.length;
-    var year = '20'.concat(this.state.rows[2][1].substring(5, 7));
+    var year = '20'.concat(this.state.rows[2][studentIDcol].substring(5, 7));
     var coursename = [];
     var elite = [];
     var elitesilver = [];
@@ -51,153 +80,322 @@ export class FileHandle extends Component {
     var below40 = [];
 
     for (i = 0; i < 50; i++) {
-      elite[i] = 0;
-      below40[i] = 0;
-      successComp[i] = 0;
-      elitegold[i] = 0;
-      elitesilver[i] = 0;
-    }
-
-    coursename[0] = this.state.rows[1][0];
-    if (this.state.rows[1][2] === "Successfully completed") {
-      console.log("suceessfully completed");
-      if (!successComp[k]) {
-        successComp[k] = 0;
-      }
-      successComp[k]++;
-    }
-    else if (this.state.rows[1][2] === "Elite+Silver") {
-      console.log("Ellitesilver");
-      if (!elitesilver[k]) {
-        elitesilver[k] = 0;
-      }
-      elitesilver[k]++;
-    }
-    else if (this.state.rows[1][2] === "Elite") {
-      console.log("Ellite");
-      if (!elite[k]) {
-        elite[k] = 0;
-      }
-      elite[k]++;
-    }
-    else if (this.state.rows[1][2] === "Elite+gold") {
-      console.log("Ellitegold");
-      if (!elitegold[k]) {
-        elitegold[k] = 0;
-      }
-      elitegold[k]++;
-    }
-    else if (this.state.rows[1][2] === "No Certificate") {
-      console.log("No certificate");
-      if (!below40[k]) {
-        below40[k] = 0;
-      }
-      below40[k]++;
-    }
-
-
-    for (i = 1; i < n; i++) {
-      if (this.state.rows[i][0] !== coursename[k]) {
-        k++;
-        coursename[k] = this.state.rows[i][0];
-      }
-      if (this.state.rows[i][2] === "Successfully completed") {
-        console.log("suceessfully completed");
-        if (!successComp[k]) {
-          successComp[k] = 0;
+          elite[i] = 0;
+          below40[i] = 0;
+          successComp[i] = 0;
+          elitegold[i] = 0;
+          elitesilver[i] = 0;
         }
-        successComp[k]++;
-      }
-      else if (this.state.rows[i][2] === "Elite+Silver") {
-        console.log("Ellitesilver");
-        if (!elitesilver[k]) {
-          elitesilver[k] = 0;
+    
+        coursename[0] = this.state.rows[1][courseCol];
+        if (this.state.rows[1][certificateCol] === "Successfully completed") {
+          console.log("suceessfully completed");
+          if (!successComp[k]) {
+            successComp[k] = 0;
+          }
+          successComp[k]++;
         }
-        elitesilver[k]++;
-      }
-      else if (this.state.rows[i][2] === "Elite") {
-        console.log("Ellite");
-        if (!elite[k]) {
-          elite[k] = 0;
+        else if (this.state.rows[1][certificateCol] === "Elite+Silver") {
+          console.log("Ellitesilver");
+          if (!elitesilver[k]) {
+            elitesilver[k] = 0;
+          }
+          elitesilver[k]++;
         }
-        elite[k]++;
-      }
-      else if (this.state.rows[i][2] === "Elite+gold") {
-        console.log("Ellitegold");
-        if (!elitegold[k]) {
-          elitegold[k] = 0;
+        else if (this.state.rows[1][certificateCol] === "Elite") {
+          console.log("Ellite");
+          if (!elite[k]) {
+            elite[k] = 0;
+          }
+          elite[k]++;
         }
-        elitegold[k]++;
-      }
-      else if (this.state.rows[i][2] === "No Certificate") {
-        console.log("No certificate");
-        if (!below40[k]) {
-          below40[k] = 0;
+        else if (this.state.rows[1][certificateCol] === "Elite+gold") {
+          console.log("Ellitegold");
+          if (!elitegold[k]) {
+            elitegold[k] = 0;
+          }
+          elitegold[k]++;
         }
-        below40[k]++;
-      }
+        else if (this.state.rows[1][certificateCol] === "No Certificate") {
+          console.log("No certificate");
+          if (!below40[k]) {
+            below40[k] = 0;
+          }
+          below40[k]++;
+        }
+    
+    
+        for (i = 1; i < n; i++) {
+          if (this.state.rows[i][courseCol] !== coursename[k]) {
+            k++;
+            coursename[k] = this.state.rows[i][courseCol];
+          }
+          if (this.state.rows[i][certificateCol] === "Successfully completed") {
+            console.log("suceessfully completed");
+            if (!successComp[k]) {
+              successComp[k] = 0;
+            }
+            successComp[k]++;
+          }
+          else if (this.state.rows[i][certificateCol] === "Elite+Silver") {
+            console.log("Ellitesilver");
+            if (!elitesilver[k]) {
+              elitesilver[k] = 0;
+            }
+            elitesilver[k]++;
+          }
+          else if (this.state.rows[i][certificateCol] === "Elite") {
+            console.log("Ellite");
+            if (!elite[k]) {
+              elite[k] = 0;
+            }
+            elite[k]++;
+          }
+          else if (this.state.rows[i][certificateCol] === "Elite+gold") {
+            console.log("Ellitegold");
+            if (!elitegold[k]) {
+              elitegold[k] = 0;
+            }
+            elitegold[k]++;
+          }
+          else if (this.state.rows[i][certificateCol] === "No Certificate") {
+            console.log("No certificate");
+            if (!below40[k]) {
+              below40[k] = 0;
+            }
+            below40[k]++;
+          }
+        }
+        var elitesum = 0, successCompsum = 0, elitesilversum = 0, elitegoldsum = 0, below40sum = 0;
+        for (i = 0; i < n; i++) {
+          if (elite[i])
+            elitesum = elitesum + elite[i];
+          if (successComp[i])
+            successCompsum = successComp[i] + successCompsum;
+          if (elitesilver[i])
+            elitesilversum = elitesilversum + elitesilver[i];
+          if (elitegold[i])
+            elitegoldsum = elitegoldsum + elitegold[i];
+          if (below40[i])
+            below40sum = below40sum + below40[i];
+        }
+    
+        console.log("elite performance");
+        console.log(elite)
+        console.log(coursename);
+        console.log(elitegoldsum);
+        console.log(successCompsum);
+        console.log(elitesilversum);
+        console.log(elitegold);
+        console.log("Successful completion");
+        console.log(successComp);
+        console.log(elitesilversum);
+        console.log(this.state.roll);
+        //    const data = { roll:this.state.roll,name:this.state.name , lastname:this.state.lastname }
+        // axios.post(url+'/send',{
+        //   method: 'POST',
+    
+        //   body: JSON.stringify({
+        //     rows: this.state.rows, coursename: coursename,
+        //     elite: elite, elitesum: elitesum,
+        //     elitegold: elitegold, elitegoldsum: elitegoldsum,
+        //     elitesilver: elitesilver, elitesilversum: elitesilversum,
+        //     successComp: successComp, successCompsum: successCompsum,
+        //     below40: below40, below40sum: below40sum, year: year
+        //   }), // data can be `string` or {object}!
+    
+        //   headers: { 'Content-Type': 'application/json' }
+        // })
+    
+        fetch(url + '/send', {
+          method: 'POST',
+          body: JSON.stringify({
+            rows: this.state.rows, coursename: coursename,
+            elite: elite, elitesum: elitesum,
+            elitegold: elitegold, elitegoldsum: elitegoldsum,
+            elitesilver: elitesilver, elitesilversum: elitesilversum,
+            successComp: successComp, successCompsum: successCompsum,
+            below40: below40, below40sum: below40sum, year: year
+          }), // data can be `string` or {object}!
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then(res => res.json())
+          .catch(error => console.error('Error:', error))
+          .then(response => console.log('Success:', response));
+           
+          history.push('/dashboard');
+          event.preventDefault();
+    
     }
-    var elitesum = 0, successCompsum = 0, elitesilversum = 0, elitegoldsum = 0, below40sum = 0;
-    for (i = 0; i < n; i++) {
-      if (elite[i])
-        elitesum = elitesum + elite[i];
-      if (successComp[i])
-        successCompsum = successComp[i] + successCompsum;
-      if (elitesilver[i])
-        elitesilversum = elitesilversum + elitesilver[i];
-      if (elitegold[i])
-        elitegoldsum = elitegoldsum + elitegold[i];
-      if (below40[i])
-        below40sum = below40sum + below40[i];
-    }
+      
 
-    console.log("elite performance");
-    console.log(elite)
-    console.log(coursename);
-    console.log(elitegoldsum);
-    console.log(successCompsum);
-    console.log(elitesilversum);
-    console.log(elitegold);
-    console.log("Successful completion");
-    console.log(successComp);
-    console.log(elitesilversum);
-    console.log(this.state.roll);
-    //    const data = { roll:this.state.roll,name:this.state.name , lastname:this.state.lastname }
-    // axios.post(url+'/send',{
-    //   method: 'POST',
 
-    //   body: JSON.stringify({
-    //     rows: this.state.rows, coursename: coursename,
-    //     elite: elite, elitesum: elitesum,
-    //     elitegold: elitegold, elitegoldsum: elitegoldsum,
-    //     elitesilver: elitesilver, elitesilversum: elitesilversum,
-    //     successComp: successComp, successCompsum: successCompsum,
-    //     below40: below40, below40sum: below40sum, year: year
-    //   }), // data can be `string` or {object}!
+   }
 
-    //   headers: { 'Content-Type': 'application/json' }
-    // })
+  // sqlupload = (event) => {
+  //   this.setState({
+  //     rows: event.target.value
+  //   });
 
-    fetch(url + '/send', {
-      method: 'POST',
-      body: JSON.stringify({
-        rows: this.state.rows, coursename: coursename,
-        elite: elite, elitesum: elitesum,
-        elitegold: elitegold, elitegoldsum: elitegoldsum,
-        elitesilver: elitesilver, elitesilversum: elitesilversum,
-        successComp: successComp, successCompsum: successCompsum,
-        below40: below40, below40sum: below40sum, year: year
-      }), // data can be `string` or {object}!
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+  //   console.log("Done");
+  //   console.log(this.state.rows.length);
+  //   var i = 1, k = 0;
+  //   var n = this.state.rows.length;
+  //   var year = '20'.concat(this.state.rows[2][1].substring(5, 7));
+  //   var coursename = [];
+  //   var elite = [];
+  //   var elitesilver = [];
+  //   var elitegold = [];
+  //   var successComp = [];
+  //   var below40 = [];
 
-    //window.location.href = "http://localhost:3001/dashboard";
-    history.push('/dashboard');
-    event.preventDefault();
-  }
+  //   for (i = 0; i < 50; i++) {
+  //     elite[i] = 0;
+  //     below40[i] = 0;
+  //     successComp[i] = 0;
+  //     elitegold[i] = 0;
+  //     elitesilver[i] = 0;
+  //   }
+
+  //   coursename[0] = this.state.rows[1][0];
+  //   if (this.state.rows[1][2] === "Successfully completed") {
+  //     console.log("suceessfully completed");
+  //     if (!successComp[k]) {
+  //       successComp[k] = 0;
+  //     }
+  //     successComp[k]++;
+  //   }
+  //   else if (this.state.rows[1][2] === "Elite+Silver") {
+  //     console.log("Ellitesilver");
+  //     if (!elitesilver[k]) {
+  //       elitesilver[k] = 0;
+  //     }
+  //     elitesilver[k]++;
+  //   }
+  //   else if (this.state.rows[1][2] === "Elite") {
+  //     console.log("Ellite");
+  //     if (!elite[k]) {
+  //       elite[k] = 0;
+  //     }
+  //     elite[k]++;
+  //   }
+  //   else if (this.state.rows[1][2] === "Elite+gold") {
+  //     console.log("Ellitegold");
+  //     if (!elitegold[k]) {
+  //       elitegold[k] = 0;
+  //     }
+  //     elitegold[k]++;
+  //   }
+  //   else if (this.state.rows[1][2] === "No Certificate") {
+  //     console.log("No certificate");
+  //     if (!below40[k]) {
+  //       below40[k] = 0;
+  //     }
+  //     below40[k]++;
+  //   }
+
+
+  //   for (i = 1; i < n; i++) {
+  //     if (this.state.rows[i][0] !== coursename[k]) {
+  //       k++;
+  //       coursename[k] = this.state.rows[i][0];
+  //     }
+  //     if (this.state.rows[i][2] === "Successfully completed") {
+  //       console.log("suceessfully completed");
+  //       if (!successComp[k]) {
+  //         successComp[k] = 0;
+  //       }
+  //       successComp[k]++;
+  //     }
+  //     else if (this.state.rows[i][2] === "Elite+Silver") {
+  //       console.log("Ellitesilver");
+  //       if (!elitesilver[k]) {
+  //         elitesilver[k] = 0;
+  //       }
+  //       elitesilver[k]++;
+  //     }
+  //     else if (this.state.rows[i][2] === "Elite") {
+  //       console.log("Ellite");
+  //       if (!elite[k]) {
+  //         elite[k] = 0;
+  //       }
+  //       elite[k]++;
+  //     }
+  //     else if (this.state.rows[i][2] === "Elite+gold") {
+  //       console.log("Ellitegold");
+  //       if (!elitegold[k]) {
+  //         elitegold[k] = 0;
+  //       }
+  //       elitegold[k]++;
+  //     }
+  //     else if (this.state.rows[i][2] === "No Certificate") {
+  //       console.log("No certificate");
+  //       if (!below40[k]) {
+  //         below40[k] = 0;
+  //       }
+  //       below40[k]++;
+  //     }
+  //   }
+  //   var elitesum = 0, successCompsum = 0, elitesilversum = 0, elitegoldsum = 0, below40sum = 0;
+  //   for (i = 0; i < n; i++) {
+  //     if (elite[i])
+  //       elitesum = elitesum + elite[i];
+  //     if (successComp[i])
+  //       successCompsum = successComp[i] + successCompsum;
+  //     if (elitesilver[i])
+  //       elitesilversum = elitesilversum + elitesilver[i];
+  //     if (elitegold[i])
+  //       elitegoldsum = elitegoldsum + elitegold[i];
+  //     if (below40[i])
+  //       below40sum = below40sum + below40[i];
+  //   }
+
+  //   console.log("elite performance");
+  //   console.log(elite)
+  //   console.log(coursename);
+  //   console.log(elitegoldsum);
+  //   console.log(successCompsum);
+  //   console.log(elitesilversum);
+  //   console.log(elitegold);
+  //   console.log("Successful completion");
+  //   console.log(successComp);
+  //   console.log(elitesilversum);
+  //   console.log(this.state.roll);
+  //   //    const data = { roll:this.state.roll,name:this.state.name , lastname:this.state.lastname }
+  //   // axios.post(url+'/send',{
+  //   //   method: 'POST',
+
+  //   //   body: JSON.stringify({
+  //   //     rows: this.state.rows, coursename: coursename,
+  //   //     elite: elite, elitesum: elitesum,
+  //   //     elitegold: elitegold, elitegoldsum: elitegoldsum,
+  //   //     elitesilver: elitesilver, elitesilversum: elitesilversum,
+  //   //     successComp: successComp, successCompsum: successCompsum,
+  //   //     below40: below40, below40sum: below40sum, year: year
+  //   //   }), // data can be `string` or {object}!
+
+  //   //   headers: { 'Content-Type': 'application/json' }
+  //   // })
+
+  //   fetch(url + '/send', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       rows: this.state.rows, coursename: coursename,
+  //       elite: elite, elitesum: elitesum,
+  //       elitegold: elitegold, elitegoldsum: elitegoldsum,
+  //       elitesilver: elitesilver, elitesilversum: elitesilversum,
+  //       successComp: successComp, successCompsum: successCompsum,
+  //       below40: below40, below40sum: below40sum, year: year
+  //     }), // data can be `string` or {object}!
+  //     headers: { 'Content-Type': 'application/json' }
+  //   })
+  //     .then(res => res.json())
+  //     .catch(error => console.error('Error:', error))
+  //     .then(response => console.log('Success:', response));
+
+  //   //window.location.href = "http://localhost:3001/dashboard";
+  //  
+  // }
 
   renderFile = (fileObj) => {
     //just pass the fileObj as parameter
@@ -287,7 +485,7 @@ export class FileHandle extends Component {
             </form>
             <div style={{textAlign:"center"}}>
                   <h5>Preview</h5>
-                <img src="https://mail.google.com/mail/u/1?ui=2&ik=9ebac8bdc1&attid=0.1&permmsgid=msg-f:1670594090186569289&th=172f24794d6ff649&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ9evxCJoBuLADm41z906vIVLSnQj-fGhwJV_36dtyPDDl12YTH6QvTPcW8uDPbSPeWq1L4ieuyiwRMYFTvYzJeZ4uXMNBARcUmiowMLIdJFLrRsq8WlTvMa67o&disp=emb&realattid=ii_kbwnq8vm0"></img>
+              <img src="https://mail.google.com/mail/u/2?ui=2&ik=9ebac8bdc1&attid=0.1&permmsgid=msg-f:1670594090186569289&th=172f24794d6ff649&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ9kYkY1XwJyyWd--DRZhhs7ff_H28GiULjdj5mEGil67rgMUVXBb1ktUx-f9IvQR0xBlHQxsz_bb07m-EB1hKnxdzd-AwPeoj8ftoZ9G-aUSz7H4NiwATYEjow&disp=emb&realattid=ii_kbwnq8vm0"></img>
                 </div>
                 
             {this.state.dataLoaded &&
